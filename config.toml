@@ -3,5 +3,5 @@ host = "0.0.0.0"
 port = 8080
 
 [oauth]
-GrantTypesAll = true
-GrantTypes = ["code", "refresh_token"]
+GrantTypesAll = false
+GrantTypes = ["code", "password", "client_credentials", "refresh_token"]
