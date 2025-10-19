@@ -4,13 +4,19 @@ import (
 	"net/http"
 
 	"github.com/Unfield/zugang/config"
+	"github.com/Unfield/zugang/db/drivers"
 	"github.com/Unfield/zugang/handlers"
 )
 
 func NewRouter(config *config.ZugangConfig) *http.ServeMux {
 	router := http.NewServeMux()
 
-	handler, err := handlers.NewHandler(nil, config)
+	storageProvider, err := drivers.NewDefaultStorageProvider(config)
+	if err != nil {
+		panic(err)
+	}
+
+	handler, err := handlers.NewHandler(storageProvider, config)
 	if err != nil {
 		panic(err)
 	}

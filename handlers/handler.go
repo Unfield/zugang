@@ -1,19 +1,18 @@
 package handlers
 
 import (
-	"database/sql"
-
 	"github.com/Unfield/zugang/config"
+	"github.com/Unfield/zugang/db"
 )
 
 type Handler struct {
-	db     *sql.DB
-	config *config.ZugangConfig
+	storageProvider db.StorageProvider
+	config          *config.ZugangConfig
 }
 
-func NewHandler(db *sql.DB, config *config.ZugangConfig) (*Handler, error) {
+func NewHandler(storageProvider db.StorageProvider, config *config.ZugangConfig) (*Handler, error) {
 	return &Handler{
-		db:     db,
-		config: config,
+		storageProvider: storageProvider,
+		config:          config,
 	}, nil
 }
