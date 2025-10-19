@@ -10,7 +10,7 @@ type TenantModel struct {
 	TenantID  string          `json:"tenant_id"`
 	Name      string          `json:"name"`
 	Issuer    string          `json:"issuer"`
-	Branding  any             `json:"branding"`
+	Branding  json.RawMessage `json:"branding"`
 	Settings  json.RawMessage `json:"settings"`
 	Active    bool            `json:"active"`
 	CreatedAt time.Time       `json:"created_at"`
